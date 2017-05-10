@@ -6,10 +6,17 @@ const todo = (state = {}, action) => {
         text: action.text,
         completed: false
       }
+    case 'TOGGLE_TODO':
+        if (state.id !== action.id) {
+          return state
+        }
 
-      default:
-        return state
-  }
+        return Object.assign({}, state, {
+          completed: !state.completed
+        })
+    default:
+      return state
+  }    
 }
 
 const todos = (state = [], action) => {
@@ -19,6 +26,10 @@ const todos = (state = [], action) => {
         ...state, //returns all items of the current state
         todo(undefined, action) //adds the newly added todo as the last item in the array
       ]
+    case 'TOGGLE_TODO':
+      return state.map(t =>
+      todo(t, action)
+    )
 
     default:
       return state

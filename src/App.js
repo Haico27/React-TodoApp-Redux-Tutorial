@@ -1,5 +1,15 @@
 import React from 'react'
+import AddTodo from './containers/AddTodo'
 
+
+const App = () => (
+  <div>
+    <AddTodo />
+  </div>
+)
+
+
+/*
 class App extends React.Component {
   render() {
     return (
@@ -7,5 +17,6 @@ class App extends React.Component {
     )
   }
 }
+*/
 
 export default App
